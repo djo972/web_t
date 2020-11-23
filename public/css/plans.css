@@ -1,0 +1,44 @@
+.list .card {
+    background-color: #292929;
+    color: white;
+}
+
+.col-sm-4 {
+    padding: 15px;
+}
+
+/* #waitForPaymentModule {
+    color: white;
+} */
+
+.btn.btn-primary {
+    background-color: #981423;
+    margin-top: 0;
+    border: none;
+    padding: 15px 80px;
+    text-decoration: none;
+    text-transform: uppercase;
+    -webkit-border-radius: 5px 5px 5px 5px;
+    border-radius: 5px 5px 5px 5px;
+    margin: 20px 0;
+}
+
+.btn.btn-primary:focus,
+.btn.btn-primary:focus:active,
+.btn-primary:not(:disabled):not(.disabled):active:focus {
+    box-shadow: none;
+}
+
+.btn.btn-primary:not(:disabled):not(.disabled):active {
+    background-color: #981423;
+    border-color: transparent; 
+}
+
+.btn.btn-primary > a {
+    color: white;
+    text-decoration: none;
+}
+
+.btn.btn-primary.pay {
+    background-color: #219653;
+}
