@@ -16,6 +16,13 @@
                         <input type="text" id="name" name="name" placeholder="@lang('messages.label.theme')" class="form-control" maxlength="20">
                         <span class="error" style="color: red"></span>
                     </div>
+                    <div class="form-group">
+                        <label>@lang('messages.label.themeparent')</label>
+                        <select class="form-control" name="theme_parent" id="fillerListThemes">
+                            <option value="" >@lang('messages.label.select.themesparent')</option>
+                        </select>
+                        <span class="error" style="color: red"></span>
+                    </div>
                     <div class="custom-file mb-3">
                         <label for="icon" class="custom-file-label">@lang('messages.label.icon')</label>
                         <input type="file" id="icon" name="icon" class="custom-file-input" >

@@ -32,6 +32,13 @@ class ThemeRepository
         return $themes;
     }
 
+    public static function getAllFirstLevelThemes()
+    {
+        $themes = Theme::where('is_visible', '=', 1)->where('level','=',0)->orderBy('order', 'asc')->limit(Theme::MAX_THEME)->get();
+
+        return $themes;
+    }
+
     /**
      * find all themes or find themes by name
      *
@@ -46,6 +53,19 @@ class ThemeRepository
         } else {
             $themes = Theme::orderBy('order', 'asc')->get();
         }
+
+        return $themes;
+    }
+    /**
+     * find themes by parent id
+     *
+     * @param int $parentId
+     *
+     * @return Theme[]|\Illuminate\Database\Eloquent\Collection
+     */
+    public static function findThemesByParent($parentId)
+    {
+        $themes = Theme::where('theme_parent', '=', $parentId)->orderBy('order', 'asc')->get();
 
         return $themes;
     }
@@ -64,6 +84,20 @@ class ThemeRepository
         return $theme;
     }
 
+
+    /**
+     * get videos by theme id For Front
+     *
+     * @param int $themeId
+     * @return Theme
+     */
+    public static function load($themeId)
+    {
+        $theme = Theme::find($themeId);
+
+        return $theme;
+    }
+
     /**
      * create new theme
      *
@@ -73,12 +107,14 @@ class ThemeRepository
      *
      * @return bool
      */
-    public static function create($name, $icon, $isVisible)
+    public static function create($name, $icon, $isVisible, $themeParent = null, $level = 0)
     {
         $theme = new Theme();
-        $theme->name = $name;
-        $theme->icon = $icon;
-        $theme->is_visible = $isVisible;
+        $theme->setName($name);
+        $theme->setIcon($icon);
+        $theme->setIsVisible($isVisible);
+        $theme->setThemeParent($themeParent);
+        $theme->setLevel($level);
 
         return $theme->save();
     }
@@ -95,13 +131,13 @@ class ThemeRepository
     public function update($name, $icon, $isVisible)
     {
         if (isset($name)) {
-            $this->theme->name = $name;
+            $this->theme->setName($name);
         }
         if (isset($icon)) {
-            $this->theme->icon = $icon;
+            $this->theme->setIcon($icon);
         }
         if (isset($isVisible)) {
-            $this->theme->is_visible = $isVisible;
+            $this->theme->setIsVisible($isVisible);
         }
 
         return $this->theme->save();
@@ -116,9 +152,9 @@ class ThemeRepository
     public function showAtHome($enabled)
     {
         if ($enabled == false) {
-            $this->theme->is_visible = false;
+            $this->theme->setIsVisible(false);
         } else {
-            $this->theme->is_visible = true;
+            $this->theme->setIsVisible(true);
         }
 
         return $this->theme->save();

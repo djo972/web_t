@@ -2,6 +2,8 @@
 
 namespace App\Helpers;
 
+use App\Repositories\ThemeRepository;
+
 /**
  * upload image to /storage/images folder and return the name of image
  *
@@ -56,3 +58,18 @@ function removeVideo($fileName)
 
     return true;
 }
+
+
+function getThemeLevel($themeId){
+
+    $level = 0;
+    if($themeId !== null ) {
+        $theme = ThemeRepository::load($themeId);
+        if ($theme->getId()) {
+            $level = $theme->getLevel() + 1;
+        }
+    }
+
+    return $level;
+}
+

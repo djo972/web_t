@@ -37,6 +37,7 @@ return [
     'title_delete_user' => 'Supprimer un utilisateur',
     'title_add_xls' => 'Ajouter utilisateurs avec excel',
     'label.theme' => 'Nom thème',
+    'label.themeparent' => 'Thème Parent',
     'label.icon' => 'Icône',
     'checkbox.visible' => 'Publier',
     'checkbox.shareable' => 'Afficher les liens de partage',
@@ -68,6 +69,7 @@ return [
     'label.upload_video' => 'Envoyer',
     'label.themes' => 'Sélectionner les thèmes de vidéo',
     'label.select.themes' => 'Filtrer par thème',
+    'label.select.themesparent' => 'Pas de thème parent',
     'label.video_added' => 'Ajouté le ',
 
     'label.parameters.access' => 'Restreindre aux utilisateurs connectés :',

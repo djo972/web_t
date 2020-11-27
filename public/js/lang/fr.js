@@ -24,6 +24,7 @@ var messages = {
     quit_page_warning: "Veuillez ne pas quitter la page",
     validate: 'Valider',
     pay: 'Payer',
+    select_themesparent : 'Pas de thème parent',
 };
 
 var apiResponseMessages = {

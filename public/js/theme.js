@@ -136,6 +136,7 @@ $(document).ready(function () {
         $themeModal.find('#edit-theme').remove();
         ShowIcon('');
         $('#themeModalLabel').text(messages.modal_theme_add);
+        _ajaxLoadThemes('#fillerListThemes');
     });
 
     $list_items_theme.on('click', 'button.update', function (event) {
@@ -160,7 +161,7 @@ $(document).ready(function () {
                     type: 'hidden',
                     id: 'edit-theme',
                     name: '_method',
-                    value: 'put'
+                    value: 'PUT'
                 }));
             },
             error: function (response) {
@@ -251,6 +252,26 @@ $(document).ready(function () {
 
         }
     });
+
+    var _ajaxLoadThemes = function (select) {
+        if(select == null){
+            select = '.select-multiple-drag';
+        }
+        $.ajax({
+            method: 'get',
+            url: '/bo/theme/list',
+            dataType: 'json',
+            cache: false,
+        }).done(function (data) {
+            if (data && data != null) {
+                $(select).empty();
+                $(select).append('<option>' + messages.select_themesparent + '</option>');
+                $.each(data, function (index, value) {
+                    $(select).append('<option value="' + value.id + '">' + value.name + '</option>');
+                });
+            }
+        });
+    }
 
 
 });

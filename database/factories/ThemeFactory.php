@@ -9,6 +9,8 @@ $factory->define(Theme::class, function () {
     return [
         'name' => $faker->company,
         'icon' => 'icon-test.png',
-        'is_visible' => $faker->randomElement([true, false])
+        'is_visible' => $faker->randomElement([true, false]),
+        'theme_parent' => null,
+        'level' => 0
     ];
 });

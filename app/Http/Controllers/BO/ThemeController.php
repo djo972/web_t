@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\BO;
 
+use function App\Helpers\getThemeLevel;
 use function App\Helpers\removeImage;
 use function App\Helpers\uploadImage;
 use App\Http\Controllers\Controller;
@@ -72,9 +73,11 @@ class ThemeController extends Controller
         $name = $request->input('name');
         $isVisible = $request->input('is_visible', 0);
         $icon = $request->file('icon');
+        $parentTheme = $request->input('theme_parent');
         if ((ThemeRepository::totalVisibleTheme() < Theme::MAX_THEME && $isVisible == true) || ($isVisible == 0)) {
+            $level = getThemeLevel($parentTheme);
             $icon = uploadImage($icon);
-            ThemeRepository::create($name, $icon, $isVisible);
+            ThemeRepository::create($name, $icon, $isVisible, $parentTheme, $level);
             return response()->json(["message" => 'CREATE_SUCCESS'], 201);
         } else {
             return response()->json(["error" => 'MENU_SATURATED'], 422);
@@ -91,8 +94,8 @@ class ThemeController extends Controller
      */
     public function update(UpdateThemeRequest $request, $themeId)
     {
-        $theme = Theme::findOrFail($themeId);
         $name = $request->input('name');
+        $theme = Theme::findOrFail($themeId);
         $isVisible = $request->input('is_visible', 0);
 
         if (ThemeRepository::totalVisibleTheme($themeId) < Theme::MAX_THEME) {

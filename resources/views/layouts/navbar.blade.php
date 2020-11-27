@@ -17,19 +17,7 @@
     </button>
     <div  id="navbarNav" class="collapse navbar-collapse">
         <ul id="listLinks" class="navbar-nav">
-{{--        @foreach($themes as $theme)--}}
-{{--                <li>--}}
-{{--                    <a href="{{ route('index.video',$theme->id) }}"  >{{ $theme->name }}--}}
-{{--                        <span><img src="{{ asset('/uploads/images/'. $theme->icon) }}"/></span>--}}
-{{--                    </a></li>--}}
-{{--            @endforeach--}}
-            @foreach($themes as $theme)
-                <li>
-                    <a href="{{ route('index.video',$theme->id) }}" >
-                        <p>{{ $theme->name }}</p>
-                        <img src="{{ asset('/uploads/images/'. $theme->icon) }}"/>
-                    </a></li>
-            @endforeach
+            {!! $menu_themes !!}
         </ul>
     </div>
 </div>
