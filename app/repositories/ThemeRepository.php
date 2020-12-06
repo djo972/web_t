@@ -105,9 +105,12 @@ class ThemeRepository
      * @param string $icon
      * @param int $isVisible
      *
+     * @param null $themeParent
+     * @param int $level
+     * @param null $classCss
      * @return bool
      */
-    public static function create($name, $icon, $isVisible, $themeParent = null, $level = 0)
+    public static function create($name, $icon, $isVisible, $themeParent = null, $level = 0, $classCss = null)
     {
         $theme = new Theme();
         $theme->setName($name);
@@ -115,6 +118,7 @@ class ThemeRepository
         $theme->setIsVisible($isVisible);
         $theme->setThemeParent($themeParent);
         $theme->setLevel($level);
+        $theme->setClassCss($classCss);
 
         return $theme->save();
     }
@@ -128,17 +132,15 @@ class ThemeRepository
      *
      * @return bool
      */
-    public function update($name, $icon, $isVisible)
+    public function update($name, $icon, $isVisible, $themeParent = null, $level = 0, $classCss = null)
     {
-        if (isset($name)) {
-            $this->theme->setName($name);
-        }
-        if (isset($icon)) {
-            $this->theme->setIcon($icon);
-        }
-        if (isset($isVisible)) {
-            $this->theme->setIsVisible($isVisible);
-        }
+
+        $this->theme->setName($name);
+        $this->theme->setIcon($icon);
+        $this->theme->setIsVisible($isVisible);
+        $this->theme->setThemeParent($themeParent);
+        $this->theme->setLevel($level);
+        $this->theme->setClassCss($classCss);
 
         return $this->theme->save();
     }

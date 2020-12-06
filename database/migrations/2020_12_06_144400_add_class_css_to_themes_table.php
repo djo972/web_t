@@ -14,7 +14,7 @@ class AddClassCssToThemesTable extends Migration
     public function up()
     {
         Schema::table('themes', function (Blueprint $table) {
-            //
+            $table->string('class_css')->nullable();
         });
     }
 
@@ -26,7 +26,7 @@ class AddClassCssToThemesTable extends Migration
     public function down()
     {
         Schema::table('themes', function (Blueprint $table) {
-            //
+            $table->dropColumn('class_css');
         });
     }
 }

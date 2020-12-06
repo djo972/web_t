@@ -38,6 +38,7 @@ return [
     'title_add_xls' => 'Ajouter utilisateurs avec excel',
     'label.theme' => 'Nom thème',
     'label.themeparent' => 'Thème Parent',
+    'label.classcss' => 'Classe CSS',
     'label.icon' => 'Icône',
     'checkbox.visible' => 'Publier',
     'checkbox.shareable' => 'Afficher les liens de partage',

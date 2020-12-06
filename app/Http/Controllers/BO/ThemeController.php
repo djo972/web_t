@@ -74,10 +74,11 @@ class ThemeController extends Controller
         $isVisible = $request->input('is_visible', 0);
         $icon = $request->file('icon');
         $parentTheme = $request->input('theme_parent');
+        $classCss = $request->input('class_css');
         if ((ThemeRepository::totalVisibleTheme() < Theme::MAX_THEME && $isVisible == true) || ($isVisible == 0)) {
             $level = getThemeLevel($parentTheme);
             $icon = uploadImage($icon);
-            ThemeRepository::create($name, $icon, $isVisible, $parentTheme, $level);
+            ThemeRepository::create($name, $icon, $isVisible, $parentTheme, $level, $classCss);
             return response()->json(["message" => 'CREATE_SUCCESS'], 201);
         } else {
             return response()->json(["error" => 'MENU_SATURATED'], 422);
@@ -97,6 +98,8 @@ class ThemeController extends Controller
         $name = $request->input('name');
         $theme = Theme::findOrFail($themeId);
         $isVisible = $request->input('is_visible', 0);
+        $parentTheme = $request->input('theme_parent');
+        $classCss = $request->input('class_css');
 
         if (ThemeRepository::totalVisibleTheme($themeId) < Theme::MAX_THEME) {
             if ($request->hasFile('icon')) {
@@ -107,8 +110,9 @@ class ThemeController extends Controller
                 $icon = $theme->icon;
             }
 
+            $level = getThemeLevel($parentTheme);
             $themeRepository = new ThemeRepository($theme);
-            $themeRepository->update($name, $icon, $isVisible);
+            $themeRepository->update($name, $icon, $isVisible, $parentTheme, $level, $classCss);
 
             return response()->json(["message" => 'UPDATE_SUCCESS'], 200);
         } else {

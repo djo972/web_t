@@ -15,3 +15,4 @@ yarn-error.log
 public/uploads
 database/seeds/UsersTableSeeder.php
 config/parameters.php
+/.idea/workspace.xml

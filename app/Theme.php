@@ -17,6 +17,7 @@ class Theme extends ModelDb
     const LEVEL = 'level';
     const THEME_PARENT = 'theme_parent';
     const ID = 'id';
+    const CLASS_CSS = 'class_css';
     protected $dateFormat = 'U';
     protected $fillable = [];
 
@@ -139,6 +140,22 @@ class Theme extends ModelDb
     public function setThemeParent($theme_parent): void
     {
         $this->setData(self::THEME_PARENT, $theme_parent);
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getClassCss()
+    {
+        return $this->_get(self::CLASS_CSS);
+    }
+
+    /**
+     * @param mixed $theme_parent
+     */
+    public function setClassCss($class_css): void
+    {
+        $this->setData(self::CLASS_CSS, $class_css );
     }
 
 

@@ -1,4 +1,3 @@
-'use strict';
 
 function submitForm(method, url, data) {
     $.ajax({
@@ -139,6 +138,7 @@ $(document).ready(function () {
         _ajaxLoadThemes('#fillerListThemes');
     });
 
+
     $list_items_theme.on('click', 'button.update', function (event) {
         event.preventDefault();
         var $themeModal = $('#addTheme');
@@ -146,14 +146,18 @@ $(document).ready(function () {
         $themeModal.find('form span.error').html("");
         $themeModal.find('form')[0].reset();
         $('#themeModalLabel').text(messages.modal_theme_update);
+        _ajaxLoadThemes('#fillerListThemes');
         $.ajax({
             type: 'get',
             url: url,
             dataType: 'json',
             success: function (response) {
+                console.log(response);
                 $themeModal.find('form').attr({"action": "/bo/theme/" + response.id, "method": "post"});
                 $themeModal.modal('show');
                 $("#name").val(response.name);
+                $('select[name=theme_parent]').val(response.theme_parent);
+                $("#class_css").val(response.class_css);
                 ShowIcon(response.icon);
                 $('#is_visible input').removeAttr('checked');
                 $('input[name=is_visible][value=' + response.is_visible + ']').prop('checked', true);
@@ -265,7 +269,7 @@ $(document).ready(function () {
         }).done(function (data) {
             if (data && data != null) {
                 $(select).empty();
-                $(select).append('<option>' + messages.select_themesparent + '</option>');
+                $(select).append('<option value="">' + messages.select_themesparent + '</option>');
                 $.each(data, function (index, value) {
                     $(select).append('<option value="' + value.id + '">' + value.name + '</option>');
                 });
