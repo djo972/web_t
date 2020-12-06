@@ -50,7 +50,7 @@ class HomeController extends Controller
             return $videos;
         }
 
-        return view('page');
+        return view('page',['theme_id' => $themeId]);
     }
 
     /**

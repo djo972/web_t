@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('content')
+    @include('layouts.sidebar')
     <div class="row container_video no-gutters">
         <div class="col col-lg-9 col-md-8 col_video">
             <div class='bloc_video_theme'>
