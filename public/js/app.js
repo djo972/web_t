@@ -1,4 +1,4 @@
-'use strict';
+
 /**
  * Setup module
  */
@@ -38,7 +38,8 @@ var App = function () {
      * Load carousel viseos
      */
     var _loadCarouselVideos = function () {
-        console.log('_loadCarouselVideos');
+        console.log($('.left main-sidebar').length == 0);
+
         var lastPage = '';
         $.ajax({
             type: 'get',
@@ -47,22 +48,24 @@ var App = function () {
             contentType: 'application/json',
             cache: false,
             success: function (response) {
+
                 var carouselData = '';
                 var active = '';
                 $listVideos.find('.carousel-video').html('');
                 if (response.data != '') {
                     getFirstVideo(response.data[0]);
-
-                    $.each(response.data, function (index, value) {
-                        var filePathImage = baseUrl + '/uploads/images/' + value.preview;
-                        if (index == 0) {
-                            active = 'active_image';
-                        } else {
-                            active = '';
-                        }
-                        carouselData += "<div class='item' data-id='" + value.id + "'><img class='item_video " + active + "' alt='" + value.name + "' src='" + filePathImage + "'/><h2>" + value.name + "</h2></div>";
-                    });
-                    $listVideos.find('.carousel-video').html(carouselData);
+                    if(response.data.length != 1){
+                        $.each(response.data, function (index, value) {
+                            var filePathImage = baseUrl + '/uploads/images/' + value.preview;
+                            if (index == 0) {
+                                active = 'active_image';
+                            } else {
+                                active = '';
+                            }
+                            carouselData += "<div class='item' data-id='" + value.id + "'><img class='item_video " + active + "' alt='" + value.name + "' src='" + filePathImage + "'/><h2>" + value.name + "</h2></div>";
+                        });
+                        $listVideos.find('.carousel-video').html(carouselData);
+                    }
                 } else {
                     $('.container_video').html("<div id='notfound'><div class='notfound'><div class='notfound-404'></div><h1>Oops!</h1><p>" + messages.video_not_found + "</p><a href='/'>" + messages.back_home + "</a></div></div>");
                 }
@@ -71,39 +74,42 @@ var App = function () {
             error: function (response) {
                 $('.container_video').html("<div id='notfound'><div class='notfound'><div class='notfound-404'></div><h1>Oops!</h1><p>" + messages.video_not_found + "</p><a href='/'>" + messages.back_home + "</a></div></div>");
             },
-            complete: function () {
-                var page = 1;
-                $(".carousel-video").mCustomScrollbar({
-                    axis: "x",
-                    theme: "dark-3",
-                    horizontalScroll: true,
-                    advanced: {autoExpandHorizontalScroll: true},
-                    callbacks: {
-                        onTotalScroll: function () {
-                            page++;
-                            if (page <= lastPage) {
-                                loadMoreVideo(page)
-                            }
-                        },
-                        ondrag: function ($item, position) {
-                            // original functionality - better be safe
-                            $item.css(position);
+            complete: function (response) {
+                console.log(response)
+                if(response.responseJSON)
+                    if(response.responseJSON.data.length > 1){
+                        var page = 1;
+                        $(".carousel-video").mCustomScrollbar({
+                            axis: "x",
+                            theme: "dark-3",
+                            horizontalScroll: true,
+                            advanced: {autoExpandHorizontalScroll: true},
+                            callbacks: {
+                                onTotalScroll: function () {
+                                    page++;
+                                    if (page <= lastPage) {
+                                        loadMoreVideo(page)
+                                    }
+                                },
+                                ondrag: function ($item, position) {
+                                    // original functionality - better be safe
+                                    $item.css(position);
 
-                            var sign = '-';
-                            if ($this._prevDragPositionY > position.top) {
-                                sign = '+'; //console.log('scrolling up');
-                            } else { //console.log('scrolling down'); }
-                                $this._prevDragPositionY = position.top;
+                                    var sign = '-';
+                                    if ($this._prevDragPositionY > position.top) {
+                                        sign = '+'; //console.log('scrolling up');
+                                    } else { //console.log('scrolling down'); }
+                                        $this._prevDragPositionY = position.top;
 
-                                $('.jsScroll').mCustomScrollbar("scrollTo", sign + "=75", {
-                                    scrollInertia: 300,
-                                    scrollEasing: "linear"
-                                });
+                                        $('.jsScroll').mCustomScrollbar("scrollTo", sign + "=75", {
+                                            scrollInertia: 300,
+                                            scrollEasing: "linear"
+                                        });
+                                    }
+                                }
                             }
-                        }
+                        });
                     }
-                });
-
             }
 
         });
@@ -155,7 +161,9 @@ var App = function () {
 
             description += "<h1>" + response.name + "</h1>";
             description += "<div class='description_video'>" + response.description + "</div>";
-            $('.bloc_desc').html(description);
+            // $('.bloc_desc').html(description);
+
+
             jQuery('iframe').contents().find('#player .controls-wrapper .title h1').css({'display':'none'});
             if (response.is_shareable == 1) {
                 $('.share_links').show();
@@ -177,6 +185,7 @@ var App = function () {
         $("#listLinks li").each(function (index) {
             if ($(this).find('a').attr('href') == url) {
                 $(this).find('a').addClass('active_navbar_li');
+                $(this).find('a').parent().addClass('active_navbar_li');
             }
         });
     };
@@ -271,18 +280,18 @@ var App = function () {
             $toTop.hide();
         }
     }
-   var _getEndedEvent=function(){
+    var _getEndedEvent=function(){
 
-       var iframe = document.querySelector('iframe');
-       var player = new Vimeo.Player(iframe);
-       console.log(iframe);
-       console.log(player);
-       player.on('play', function() {
-           console.log('Played the video');
-       });
-       player.getVideoTitle().then(function(title) {
-           console.log('title:', title);
-       });
+        var iframe = document.querySelector('iframe');
+        var player = new Vimeo.Player(iframe);
+        console.log(iframe);
+        console.log(player);
+        player.on('play', function() {
+            console.log('Played the video');
+        });
+        player.getVideoTitle().then(function(title) {
+            console.log('title:', title);
+        });
     };
     // var _scrollMenu = function () {
     //     $('#listLinks').mousewheel(function(e, delta) {
@@ -486,7 +495,7 @@ window.addEventListener('load', function () {
     iframe.each( function() {
         var player = $f( $(this)[0] );
         // When the player is ready, add listeners for pause, finish, and playProgress
-    console.log(player)
+        console.log(player)
 
     } );
 });

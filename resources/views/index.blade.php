@@ -1,8 +1,9 @@
 @extends('layouts.app')
+@include('layouts.header')
 @section('content')
+
 @section('block_js')
     {{-- Load vimeo player --}}
-
     <script src="https://player.vimeo.com/api/player.js"></script>
     <script>
         var isShareable = '';
@@ -27,9 +28,9 @@
     </script>
 @endsection
     <div class="container_home">
-        @if($video != null)
-            <h1>{{ $video->name }} </h1>
-        @endif
+{{--        @if($video != null)--}}
+{{--            <h1>{{ $video->name }} </h1>--}}
+{{--        @endif--}}
         <div class="bloc_video">
             @if($video != null)
                 @if($video->video_file != '')
@@ -52,15 +53,17 @@
                 @endif
             @endif
         </div>
-        <div class="bloc_description">
-            @if($video != null)
-                {!! $video->description !!}
-            @else
-                <div class="ajax-load text-center" >
-                    <img src="{{ asset('/images/loading.svg') }}">
-                </div>
-            @endif
-        </div>
+{{--        <div class="bloc_description">--}}
+{{--            @if($video != null)--}}
+{{--                {!! $video->description !!}--}}
+{{--            @else--}}
+{{--                <div class="ajax-load text-center" >--}}
+{{--                    <img src="{{ asset('/images/loading.svg') }}">--}}
+{{--                </div>--}}
+{{--            @endif--}}
+{{--        </div>--}}
+
     </div>
+@include('layouts.nav')
 
 @endsection

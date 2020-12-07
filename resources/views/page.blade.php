@@ -1,8 +1,9 @@
 @extends('layouts.app')
+@include('layouts.navbar')
 @section('content')
-    @include('layouts.sidebar')
     <div class="row container_video no-gutters">
-        <div class="col col-lg-9 col-md-8 col_video">
+{{--        <div class="col col-lg-9 col-md-8 col_video">--}}
+        <div class="col col-lg-12 col_video">
             <div class='bloc_video_theme'>
                 <div class="embed-container-theme">
                     <div class="ajax-load text-center" >
@@ -19,14 +20,17 @@
                 <img id="carouselVideoLoading" src="{{ asset('/images/spinner.svg') }}">
             </div>
         </div>
-        <div class="col col-lg-3 col-md-4 col_text">
+{{--        <div class="col col-lg-3 col-md-4 col_text">
             <div class="bloc_desc">
                 <div class="ajax-load text-center" >
                     <img src="{{ asset('/images/loading.svg') }}">
                 </div>
             </div>
-        </div>
+        </div>--}}
+        @include('layouts.sidebar')
     </div>
+
+    <input type="button" value="Back" onclick="window.history.back()" />
     <div id="toTop" ><img src="{{ asset('/images/to-top.png') }}"></div>
 @endsection
 @section('js')

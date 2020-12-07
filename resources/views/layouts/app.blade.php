@@ -30,7 +30,7 @@
     @yield('block_css')
 </head>
 <body class="page_content">
-@include('layouts.navbar')
+{{--@include('layouts.navbar')--}}
 
 <div class="container-fluid">
     @yield('content')
