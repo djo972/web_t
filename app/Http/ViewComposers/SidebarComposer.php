@@ -29,6 +29,7 @@ class SidebarComposer
         /** @var Theme $theme */
         foreach ($items as $theme) {
             $tree .= '<li class="level-'.$theme->getLevel().' '.$theme->getClassCss().'">';
+            $tree .=   '<div class="hears" ></div>';
             $tree .= '<a href='.route('index.video',$theme->getId()).'>';
             $tree .= '<p>'.$theme->name.'</p>';
             if($theme->getLevel() == 0)

@@ -199,6 +199,8 @@ var App = function () {
 
 
         $('#listVideos').on('click', '.item', function () {
+            console.log('click')
+
             var id = $(this).data('id');
             var url = '/video/' + id;
             var self = $(this);
@@ -224,11 +226,11 @@ var App = function () {
                         $(".bloc_video_theme").html(_htmlVideo(linkPost, linkVideo));
                     }*/
                     linkVideo = "https://player.vimeo.com/video/" + response.video_file;
-                    $(".bloc_video_theme").html(_htmlVideo(linkPost, linkVideo));
+                    $(".bloc_video_theme  .embed-container-theme").html(_htmlVideo(linkPost, linkVideo));
 
 
-                    $('h1').html(response.name);
-                    $(".description_video  #mCSB_1_container").html(response.description);
+                    // $('h1').html(response.name);
+                    // $(".description_video  #mCSB_1_container").html(response.description);
                     if (response.is_shareable == 1) {
                         $('.share_links').show();
                     } else {

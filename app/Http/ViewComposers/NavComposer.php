@@ -32,8 +32,9 @@ class NavComposer
             $tree .= '<a href='.route('index.video',$theme->getId()).'>';
             $tree .= '<p>'.$theme->name.'</p>';
             if($theme->getLevel() == 0)
-                $tree .= '<img src='.asset('/uploads/images/'. $theme->getIcon()).'>';
+                $tree .= '<div class="iC" ><img src='.asset('/uploads/images/'. $theme->getIcon()).'></div>';
             $tree .= '</a>';
+            $tree .=   '<div class="hears" ></div>';
 //            if (count($theme->getItems())) {
 //                $tree .= '<ul class="submenu" >';
 //                /** @var Theme $item */

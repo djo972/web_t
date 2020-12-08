@@ -30,12 +30,14 @@
     @yield('block_css')
 </head>
 <body class="page_content">
-{{--@include('layouts.navbar')--}}
 
+{{--@include('layouts.navbar')--}}
+@yield('loader')
+@yield('nav')
 <div class="container-fluid">
     @yield('content')
     <div class="share_links">
-        <ul class="list-unstyled ul_links">
+        <ul class="list-unstyled ul_links">0
             <li class="btn_twitter"></li>
             <li class="btn_facebook"></li>
             <li class="btn_instagram"></li>

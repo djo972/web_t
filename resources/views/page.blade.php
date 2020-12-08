@@ -1,5 +1,10 @@
 @extends('layouts.app')
-@include('layouts.navbar')
+@section('loader')
+    <div class="preloader"></div>
+@endsection
+@section('nav')
+    @include('layouts.navbar')
+@endsection
 @section('content')
     <div class="row container_video no-gutters">
 {{--        <div class="col col-lg-9 col-md-8 col_video">--}}
@@ -30,11 +35,35 @@
         @include('layouts.sidebar')
     </div>
 
-    <input type="button" value="Back" onclick="window.history.back()" />
     <div id="toTop" ><img src="{{ asset('/images/to-top.png') }}"></div>
+    <a id="back" href="/"> Retour accueil<img src="{{ asset('/images/back.png') }}"></a>
 @endsection
 @section('js')
     {{-- Load vimeo player --}}
+    <script>
+        // $("ul li a").on("click", function(){
+        //     alert($(this).find('p').text())
+        // });
 
+        function textToAudio() {
+
+
+            let speech = new SpeechSynthesisUtterance();
+
+            speech.lang = "fr-CA";
+            speech.text = msg;
+            speech.volume = 1;
+            speech.rate = 1;
+            speech.pitch = 1;
+
+            window.speechSynthesis.speak(speech);
+        }
+
+
+        $(window).on('load', function () {
+            $('.preloader').fadeOut('slow');
+        });
+
+    </script>
     <script src="https://player.vimeo.com/api/player.js"></script>
 @endsection
