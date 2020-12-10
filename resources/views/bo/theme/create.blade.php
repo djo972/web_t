@@ -13,7 +13,7 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label>@lang('messages.label.theme')</label>
-                        <input type="text" id="name" name="name" placeholder="@lang('messages.label.theme')" class="form-control" maxlength="20">
+                        <input type="text" id="name" name="name" placeholder="@lang('messages.label.theme')" class="form-control" maxlength="50">
                         <span class="error" style="color: red"></span>
                     </div>
                     <div class="form-group">
@@ -28,21 +28,21 @@
                         <input type="text" id="class_css" name="class_css" placeholder="@lang('messages.label.classcss')" class="form-control" maxlength="20">
                         <span class="error" style="color: red"></span>
                         <div class="color-picker">
+                            <div class="color-box C-red2">C-red2</div>
                             <div class="color-box C-red">C-red</div>
                             <div class="color-box C-red1">C-red1</div>
-                            <div class="color-box C-red2">C-red2</div>
                             <div class="color-box C-green">C-green</div>
                             <div class="color-box C-green1">C-green1</div>
                             <div class="color-box C-blue">C-blue</div>
-                            <div class="color-box C-blue1">C-blue1</div>
                             <div class="color-box C-blue2">C-blue2</div>
+                            <div class="color-box C-blue1">C-blue1</div>
                             <div class="color-box C-orange">C-orange</div>
                             <div class="color-box C-yellow">C-yellow</div>
-{{--                            <div class="color-box"></div>--}}
-{{--                            <div class="color-box"></div>--}}
-{{--                            <div class="color-box"></div>--}}
-{{--                            <div class="color-box"></div>--}}
-{{--                            <div class="color-box"></div>--}}
+                            <div class="color-box C-carrot">C-carrot</div>
+                            <div class="color-box C-amethyst">C-amethyst</div>
+                            <div class="color-box C-wysteria">C-wysteria</div>
+                            <div class="color-box C-asphalt">C-asphalt</div>
+                            <div class="color-box C-midnigth">C-midnigth</div>
                         </div>
                     </div>
                     <div class="custom-file mb-3">

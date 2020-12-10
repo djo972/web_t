@@ -45,7 +45,7 @@
         </ul>
     </div>
 </div>
-<div id="dark" class="dark-light"></div>
+{{--<div id="dark" class="dark-light"></div>--}}
 <!-- Scripts placed at the end of the document so the pages load faster -->
 <!-- jQuery -->
 <script src="{{ asset('/assets/plugins/jquery/jquery.min.js') }} "></script>

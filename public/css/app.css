@@ -44,7 +44,6 @@ img {
 .header_navbar {
     position: relative;
     background: #ffffff;
-    color: #cf0b0b;
     padding-left: 15px;
     height: 10vh;
     min-height: 100px;
@@ -273,8 +272,8 @@ img {
     background: #C5192D !important;
 }
 #listLinks.main- li{
-    width: 125px !important;
-    height: 125px;
+    width: 145px !important;
+    height: 145px;
     background: gray;
     color: white;
     display: flex;
@@ -290,9 +289,10 @@ img {
 }
 #listLinks.main- li a p{
     width: 100%;
-    height: 20%;
+
     color: white;
     margin: 0;
+    white-space: pre-wrap;
 }
 #listLinks.main- li a .iC {
     width: 100%;
@@ -903,7 +903,10 @@ a.logout {
     text-align: center;
     vertical-align: middle;
     height: 100%;
-    line-height: 60px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
 }
 .desc{
     width: 100%;
@@ -1002,5 +1005,28 @@ a.logout {
 }
 .C-yellow{
     background: #DFAC07 !important;
+
+}
+.C-green2{
+    background: #16a085 !important;
+}
+.C-carrot{
+    background: #e67e22 !important;
+
+}
+.C-amethyst{
+    background: #9b59b6 !important;
+
+}
+.C-wysteria{
+    background: #8e44ad !important;
+
+}
+.C-asphalt{
+    background: #34495e !important;
+
+}
+.C-midnigth{
+    background:#2c3e50 !important;
 
 }

@@ -36,7 +36,10 @@
     background: #56C02B;
     color:#56C02B;
 }
-
+.C-green2{
+    background: #16a085;
+    color:#16a085;
+}
 .C-blue{
     background: #26BDE2;
     color:#26BDE2;
@@ -57,6 +60,26 @@
 .C-yellow{
     background: #DFAC07;
     color:#DFAC07;
+}
+.C-carrot{
+    background: #e67e22;
+    color:#e67e22;
+}
+.C-amethyst{
+    background: #9b59b6;
+    color:#9b59b6;
+}
+.C-wysteria{
+    background: #8e44ad;
+    color:#8e44ad;
+}
+.C-asphalt{
+    background: #34495e;
+    color:#34495e;
+}
+.C-midnigth{
+    background:#2c3e50;
+    color:#2c3e50;
 }
 
 

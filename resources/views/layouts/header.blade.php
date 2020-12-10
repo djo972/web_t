@@ -2,7 +2,7 @@
     <div id="logo" class="navbar-brand"><a href="{{ url('/') }}"><img src="{{ asset('images/logo.png') }}" alt="{{ config('app.name') }}"></a></div>
     <div class="log">
         @if(auth()->check())
-            <p>0101010101</p>
+            <p>{{ Auth::user()->login }}</p>
             <a href="{{ route('logout') }}" class="logout">
                 <i class="fa fa-power-off"></i>
             </a>
