@@ -179,11 +179,11 @@ img {
 }
 #navbarNav {
     justify-content: flex-end;
-    padding-right: 50px;
+    /*padding-right: 50px;*/
 }
 #listLinks {
     max-width: 90%;
-    overflow-x: auto;
+    /*overflow-x: auto;*/
     min-height:100%;
     padding-bottom: 5px;
     display: flex;
@@ -204,18 +204,48 @@ img {
     height: 100%;
     padding: 10px;
     font-weight: 500;
-    font-size: 14px;
+    font-size: 12px;
+    align-items: center;
 }
+#listLinks.head- li a p {
+    margin: 0 0 5px 0 !important;
+    color: white !important;
+}
+
 #listLinks.head- li a img{
     margin: 0;
 }
+.subi{
+    width: 100%;
+    height: 0;
+    background: gray;
+    color: white;
+
+}
+.subi.active{
+    height: 60px;
+}
+.subi .hears{
+    width: 15%;
+    height: 100%;
+    background:url(../images/hear.png) center no-repeat;
+    float: left;
+}
+.subi p{
+    width: 75%;
+    height: 100%;
+    float: left;
+    line-height: 60px;
+    text-align:center;
+}
 
 #listLinks.main-{
+    max-width: 100%;
     min-height: initial;
     padding: 0;
     display: flex;
     flex-direction: row;
-    margin-top: 5%!important;
+    margin-top: 20px !important;
     -webkit-box-align: center;
     -webkit-align-items: center;
     -ms-flex-align: center;
@@ -253,13 +283,16 @@ img {
     margin-bottom: 20px;
 }
 #listLinks.main- li a{
+    margin: 10px 0;
+    font-size: 14px;
     width: 100%;
-    height: 80px;
+    height: 80%;
 }
 #listLinks.main- li a p{
     width: 100%;
     height: 20%;
     color: white;
+    margin: 0;
 }
 #listLinks.main- li a .iC {
     width: 100%;
@@ -275,6 +308,7 @@ img {
 #listLinks.main- li .hears{
     width: 100%;
     height: 20%;
+    min-height: 25px;
     background: rgba(0,0,0,0.5) url('../images/hear.png') center no-repeat;
     background-size: contain;
 }
@@ -355,6 +389,8 @@ img {
 #listLinks li.active_navbar_li {
     animation: fadein 2s;
     display: flex;
+    background: gray;
+    color: white;
     flex-direction: column;
 }
 @keyframes fadein {
@@ -372,9 +408,9 @@ img {
     color: #ffffff;
 }
 
-#listLinks li:hover a {
-    color: #cf0b0b;
-}
+/*#listLinks li:hover a {*/
+/*    color: #cf0b0b;*/
+/*}*/
 
 #listLinks li span {
     max-width: 24px;
@@ -430,7 +466,7 @@ img {
     background-color: #f1f1f1;
     margin: 2.5vh auto;
     max-width: 97%;
-    padding: 3vh 2vh;
+    padding: 1vh 2vh;
     /* height: 85vh; */
     height: auto;
     position: relative;
@@ -439,7 +475,7 @@ img {
 
 /* ------- Page home Style ------- */
 .container_home {
-    padding: 1vh;
+    /*padding: 1vh;*/
 }
 
 /*.container_home h1{*/
@@ -578,7 +614,7 @@ h2 {
 }
 .image_Container {
     height: 50vh;
-    background-color: #000;
+    /*background-color: #000;*/
     /* border: 1px solid #676767; */
     border-radius: 2px;
     vertical-align: top;
@@ -592,7 +628,7 @@ h2 {
 .bloc_list_video {
     position: relative;
     margin-top: 2vh;
-    height: 25vh;
+    height: auto !important;
 }
 #carouselVideoLoading {
     position: absolute;
@@ -630,7 +666,7 @@ h2 {
 .carousel-video .item {
     display: inline-block;
     cursor: pointer;
-    margin: 0 5px;
+    margin: 0 0 10px 0;
     /* width: 100px; */
     text-align: center;
     width: auto;
@@ -772,14 +808,17 @@ img.jssocials-share-logo {
 @keyframes bounce {
     to { transform: scale(0.9); }
 }
-
+.log p{
+    margin: 5px;
+}
 a.logout {
-    padding: 15px 20px;
-    display: block;
+    padding: 10px 15px;
+    display: inline-block;
     color: #606060;
     outline: none !important;
     text-decoration: none !important;
     transition: all 400ms ease-in-out;
+    cursor: pointer;
 }
 .dark-mode a.logout {
     color: #ffffff;
@@ -799,7 +838,7 @@ a.logout {
     left: 0;
     width: 100% !important;
     height: 100%;
-    max-height: 700px;
+    max-height: 650px;
 }
 
 .embed-container-theme {
@@ -839,14 +878,20 @@ a.logout {
     background-color: #FFF;
     background-position: center;
 }
+#sidebar-menu{
+
+}
 #sidebar-menu ul{
-    list-style:none;
+    width: 100%;
+    list-style: none;
     padding: 0;
 }
 
 #sidebar-menu ul li{
+    width: 100%;
     height: 60px;
     margin: 0 0 15px 0;
+    border-radius: 10px;
 }
 #sidebar-menu ul li a{
     width: 80%;
@@ -860,12 +905,33 @@ a.logout {
     height: 100%;
     line-height: 60px;
 }
-
+.desc{
+    width: 100%;
+    height: 60px;
+    overflow: hidden;
+}
+.desc p{
+    width: 80%;
+    height: 55px;
+    font-size: 12px;
+    margin: 0;
+    display: inline-block;
+    overflow: hidden;
+}
+.desc .hears{
+    width: 20%;
+    height: 100%;
+    background: url('../images/hear-black.png') center no-repeat;
+    background-size: contain;
+    float: left;
+    border-radius: 10px;
+}
 #sidebar-menu ul li .hears{
     width: 15%;
     height: 100%;
     background: rgba(0,0,0,0.5) url('../images/hear.png') center no-repeat;
     float: left;
+    border-radius: 10px;
 }
 #back{
     margin: 20px auto;
@@ -883,4 +949,58 @@ a.logout {
 }
 #back img{
     width: 30px;
+}
+.item-contenair{
+    display: inline-block;
+    cursor: pointer;
+    margin: 0 5px;
+    /* width: 100px; */
+    text-align: center;
+    width: auto;
+    max-width: 180px;
+    white-space: pre-wrap;
+    vertical-align: top;
+    transition: ease-in-out 0.2s;
+}
+.C-red{
+    background: #C5192D !important;
+
+}
+.C-red1{
+    background: #A21942 !important;
+
+}
+.C-red2{
+    background: #E5243B !important;
+
+}
+.C-green{
+    background: #4c9f38 !important;
+
+}
+.C-green1{
+    background: #56C02B !important;
+
+}
+
+.C-blue{
+    background: #26BDE2 !important;
+
+}
+.C-blue1{
+    background: #00689D !important;
+
+}
+.C-blue2{
+    background: #0A97D9 !important;
+
+}
+
+.C-orange{
+    background: #FF3A21 !important;
+
+}
+.C-yellow{
+    background: #DFAC07 !important;
+
 }

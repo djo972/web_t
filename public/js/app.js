@@ -62,17 +62,17 @@ var App = function () {
                             } else {
                                 active = '';
                             }
-                            carouselData += "<div class='item' data-id='" + value.id + "'><img class='item_video " + active + "' alt='" + value.name + "' src='" + filePathImage + "'/><h2>" + value.name + "</h2></div>";
+                            carouselData += "<div class='item-contenair'><div class='item' data-id='" + value.id + "'><img class='item_video " + active + "' alt='" + value.name + "' src='" + filePathImage + "'/></div><div class='desc'><div class='hears'></div><p>" + value.description + "</p></div></div>";
                         });
                         $listVideos.find('.carousel-video').html(carouselData);
                     }
                 } else {
-                    $('.container_video').html("<div id='notfound'><div class='notfound'><div class='notfound-404'></div><h1>Oops!</h1><p>" + messages.video_not_found + "</p><a href='/'>" + messages.back_home + "</a></div></div>");
+                    $('.container_video').html("<div id='notfound'><div class='notfound'><div class='notfound-404'></div><h1>Oops!</h1><p>" + messages.video_not_found + "</p></div>");
                 }
                 lastPage = response.last_page;
             },
             error: function (response) {
-                $('.container_video').html("<div id='notfound'><div class='notfound'><div class='notfound-404'></div><h1>Oops!</h1><p>" + messages.video_not_found + "</p><a href='/'>" + messages.back_home + "</a></div></div>");
+                $('.container_video').html("<div id='notfound'><div class='notfound'><div class='notfound-404'></div><h1>Oops!</h1><p>" + messages.video_not_found + "</p></div>");
             },
             complete: function (response) {
                 console.log(response)
@@ -131,7 +131,7 @@ var App = function () {
                 var carouselData = '';
                 $.each(response.data, function (index, value) {
                     var filePathImage = baseUrl + '/uploads/images/' + value.preview;
-                    carouselData += "<div class='item' data-id='" + value.id + "'><img class='item_video' alt='" + value.name + "' src='" + filePathImage + "'/><h2>" + value.name + "</h2></div>";
+                    carouselData += "<div class='item' data-id='" + value.id + "'><img class='item_video' alt='" + value.name + "' src='" + filePathImage + "'/><h2>" + value.description + "</h2></div>";
                 });
                 $('#carouselVideoLoading').hide();
                 $(".carousel-video .mCSB_container").append(carouselData);
@@ -184,8 +184,19 @@ var App = function () {
     var _activeNavbar = function () {
         $("#listLinks li").each(function (index) {
             if ($(this).find('a').attr('href') == url) {
-                $(this).find('a').addClass('active_navbar_li');
-                $(this).find('a').parent().addClass('active_navbar_li');
+                $(this).closest('.level-0').addClass('active_navbar_li');;
+                $(this).find('a:eq( 0 )').addClass('active_navbar_li');
+                // $(this).first().addClass('active_navbar_li');
+
+                // $(this).find('a').parent().addClass('active_navbar_li');
+                // $(this).find('level-0').addClass('active_navbar_li');
+                if($( ".level-1 a" ).hasClass( "active_navbar_li" )){
+                    let name=   $(this).attr('class');
+                    var className = name.split(' ');
+                    let val = $(this).find('p').text();
+                    $('.subi').addClass('active '+className[1]);
+                    $('.subi p').text(val);
+                }
             }
         });
     };
@@ -490,6 +501,36 @@ window.addEventListener('load', function () {
     }, false);
 
 
+    function textToAudio(msg) {
+
+
+        let speech = new SpeechSynthesisUtterance();
+
+        speech.lang = "fr-FR";
+        speech.text = msg;
+        speech.volume = 1;
+        speech.rate = 1;
+        speech.pitch = 1;
+
+        window.speechSynthesis.speak(speech);
+    }
+    $('.hears').on('click', function (event) {
+
+        console.log('hears')
+        event.stopPropagation();
+
+
+        let msg = $(this).parent().find("p").text();
+        console.log('hears '+msg)
+        textToAudio(msg)
+    });
+    $('#listVideos').on('click', '.hears', function (event) {
+        console.log('hears')
+        event.stopPropagation();
+        let msg = $(this).parent().find("p").text();
+        console.log('hears '+msg)
+        textToAudio(msg)
+    });
 
 
     var iframe = $('.image_Container iframe');

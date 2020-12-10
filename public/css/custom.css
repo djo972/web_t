@@ -1,4 +1,66 @@
 /* your styles go here */
+.color-picker{
+    width: 100%;
+    height: 60px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.color-box{
+    width: 30px;
+    height: 20px;
+    margin: 5px;
+    cursor: pointer;
+    border-radius: 5px;
+    overflow: hidden;
+}
+.C-red{
+    background: #C5192D;
+    color: #C5192D;
+}
+.C-red1{
+    background: #A21942;
+    color: #A21942;
+}
+.C-red2{
+    background: #E5243B;
+    color:#E5243B;
+}
+.C-green{
+    background: #4C9F38;
+    color:#4C9F38;
+}
+.C-green1{
+    background: #56C02B;
+    color:#56C02B;
+}
+
+.C-blue{
+    background: #26BDE2;
+    color:#26BDE2;
+}
+.C-blue1{
+    background: #00689D;
+    color:#00689D;
+}
+.C-blue2{
+    background: #0A97D9;
+    color:#0A97D9;
+}
+
+.C-orange{
+    background: #FF3A21;
+    color:#FF3A21;
+}
+.C-yellow{
+    background: #DFAC07;
+    color:#DFAC07;
+}
+
+
+
 .list_items_style > li {
     border: 1px solid #efefef;
     padding: 10px 20px;

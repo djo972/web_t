@@ -80,8 +80,25 @@
 }
 @media (min-width:768px){
     #navbarNav {
-         width: 70%;
+         /*width: 70%;*/
         height: 100%;
+    }
+    .navbar-expand-md {
+         justify-content: space-between !important;
+    }
+    #sidebar-menu ul li {
+        width: 30%;
+        float: left;
+        margin:  0 auto 10px;
+    }
+    #sidebar-menu ul {
+        width: 100%;
+        list-style: none;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
     }
 }
 @media(max-width:767px) {
@@ -181,6 +198,7 @@
         margin-bottom: -7px;
     }
     .embed-container-theme {
+        width: 100%;
         padding-bottom: 56.25%;
     }
     .bloc_video_theme,
@@ -192,7 +210,7 @@
         height: auto;
     }
     .container-fluid {
-        min-height: 86vh;
+        /*min-height: 86vh;*/
         height: auto;
     }
     .col_text {

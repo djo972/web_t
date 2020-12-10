@@ -34,6 +34,7 @@
 {{--@include('layouts.navbar')--}}
 @yield('loader')
 @yield('nav')
+@yield('sub')
 <div class="container-fluid">
     @yield('content')
     <div class="share_links">

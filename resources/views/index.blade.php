@@ -1,5 +1,7 @@
 @extends('layouts.app')
-@include('layouts.header')
+@section('nav')
+    @include('layouts.header')
+@endsection
 @section('content')
 
 @section('block_js')

@@ -5,12 +5,18 @@
 @section('nav')
     @include('layouts.navbar')
 @endsection
+@section('sub')
+    <div class="subi">
+        <div class="hears"></div>
+        <p>you are here</p>
+    </div>
+@endsection
 @section('content')
-    <div class="row container_video no-gutters">
+    <div class=" container_video no-gutters">
 {{--        <div class="col col-lg-9 col-md-8 col_video">--}}
         <div class="col col-lg-12 col_video">
             <div class='bloc_video_theme'>
-                <div class="embed-container-theme">
+                <div class="embed-container-theme"
                     <div class="ajax-load text-center" >
                         <img src="{{ asset('/images/loading.svg') }}">
                     </div>
@@ -45,19 +51,6 @@
         //     alert($(this).find('p').text())
         // });
 
-        function textToAudio() {
-
-
-            let speech = new SpeechSynthesisUtterance();
-
-            speech.lang = "fr-CA";
-            speech.text = msg;
-            speech.volume = 1;
-            speech.rate = 1;
-            speech.pitch = 1;
-
-            window.speechSynthesis.speak(speech);
-        }
 
 
         $(window).on('load', function () {

@@ -86,6 +86,10 @@ $(document).ready(function () {
         "showMethod": "fadeIn",
         "hideMethod": "fadeOut"
     }
-
+    $('.color-box').on('click',  function (event) {
+            let color= $(this).text();
+            console.log(color);
+            $('#class_css').val(color);
+    });
 
 });
