@@ -16,7 +16,7 @@
 {{--        <div class="col col-lg-9 col-md-8 col_video">--}}
         <div class="col col-lg-12 col_video">
             <div class='bloc_video_theme'>
-                <div class="embed-container-theme"
+                <div class="embed-container-theme">
                     <div class="ajax-load text-center" >
                         <img src="{{ asset('/images/loading.svg') }}">
                     </div>

@@ -53,7 +53,11 @@ var App = function () {
                 var active = '';
                 $listVideos.find('.carousel-video').html('');
                 if (response.data != '') {
+                    console.log(response.data.length)
                     getFirstVideo(response.data[0]);
+                    if(response.data.length == 1 ){
+                        $('.bloc_list_video').hide();
+                    }
                     if(response.data.length != 1){
                         $.each(response.data, function (index, value) {
                             var filePathImage = baseUrl + '/uploads/images/' + value.preview;
@@ -62,7 +66,7 @@ var App = function () {
                             } else {
                                 active = '';
                             }
-                            carouselData += "<div class='item-contenair'><div class='item' data-id='" + value.id + "'><img class='item_video " + active + "' alt='" + value.name + "' src='" + filePathImage + "'/></div><div class='desc'><div class='hears'></div><p>" + value.description + "</p></div></div>";
+                            carouselData += "<div class='item-contenair'><div class='item' data-id='" + value.id + "'><img class='item_video " + active + "' alt='" + value.name + "' src='" + filePathImage + "'/></div><div class='desc'><div class='vid-title'>" + value.name + "</div><div class='hears'></div><p>" + value.description + "</p></div></div>";
                         });
                         $listVideos.find('.carousel-video').html(carouselData);
                     }
@@ -80,10 +84,10 @@ var App = function () {
                     if(response.responseJSON.data.length > 1){
                         var page = 1;
                         $(".carousel-video").mCustomScrollbar({
-                            axis: "x",
+                            axis: "y",
                             theme: "dark-3",
-                            horizontalScroll: true,
-                            advanced: {autoExpandHorizontalScroll: true},
+                            // horizontalScroll: true,
+                            // advanced: {autoExpandHorizontalScroll: true},
                             callbacks: {
                                 onTotalScroll: function () {
                                     page++;
@@ -492,13 +496,13 @@ window.addEventListener('load', function () {
     let element = document.body;
     let cook =Cookies.get('skin');
 
-    if (cook == 'dark' ){
-        element.classList.add("dark-mode");
-    }
-    dark.addEventListener('click', function (event) {
-        event.preventDefault();
-        App.initDarkMode();
-    }, false);
+    // if (cook == 'dark' ){
+    //     element.classList.add("dark-mode");
+    // }
+    // dark.addEventListener('click', function (event) {
+    //     event.preventDefault();
+    //     App.initDarkMode();
+    // }, false);
 
 
     function textToAudio(msg) {

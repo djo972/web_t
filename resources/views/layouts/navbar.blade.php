@@ -10,6 +10,8 @@
 {{--        @endif--}}
 {{--    @endif--}}
     <div id="logo" class="navbar-brand"><a href="{{ url('/') }}"><img src="{{ asset('images/logo.png') }}" alt="{{ config('app.name') }}"></a></div>
+    <div class="space"></div>
+    <div id="home" class=""><a href="{{ url('/') }}"><img src="{{ asset('images/home.png') }}" alt="{{ config('app.name') }}"></a></div>
 {{--    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">--}}
 {{--        <span class="navbar-toggler-icon"></span>--}}
 {{--        <span class="navbar-toggler-icon"></span>--}}
